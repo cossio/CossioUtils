@@ -11,9 +11,10 @@ def gunzip(path):
     Check if file is gzipped, in which case extract it. 
     Returns original path.
     """
-    assert os.path.exists(path) or os.path.exists(path + '.gz')
-    if not os.path.exists(path):
+    if os.path.exists(path + '.gz'):
         subprocess.call(['gunzip', '--keep', path + '.gz'])
+    elif not os.path.exists(path):
+        raise FileNotFoundError        
     return path
 
 
@@ -21,6 +22,8 @@ def gzip(path):
     """
     Compress file. Keeps original.
     """
-    assert os.path.exists(path)
-    subprocess.call(['gzip', '--keep', '--force', path])
+    if os.path.exists(path):
+        subprocess.call(['gzip', '--keep', '--force', path])
+    else:
+        raise FileNotFoundError
     return path
