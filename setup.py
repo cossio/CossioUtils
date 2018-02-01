@@ -15,7 +15,7 @@ setup(name='CossioUtils', version='0.1.0', license='MIT',
       scripts=glob.glob("bin/*.py") + glob.glob("bin/*.sh"),
       long_description=open('README.md').read(),
       zip_safe=False,
-      setup_requires=['subprocess'],
+      setup_requires=[],
       test_suite='nose.collector',
       tests_require=['nose'],
       include_package_data=True)
